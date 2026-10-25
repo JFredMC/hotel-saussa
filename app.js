@@ -1,0 +1,16 @@
+const WA='573102127629',$=s=>document.querySelector(s),root=document.documentElement;
+const saved=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+const setT=t=>{root.dataset.theme=t;$('#theme').textContent=t==='dark'?'☀️':'🌙';localStorage.setItem('theme',t)};setT(new URLSearchParams(location.search).get('theme')||saved);
+$('#theme').onclick=()=>setT(root.dataset.theme==='dark'?'light':'dark');
+$('#burger').onclick=()=>{const o=$('#menu').classList.toggle('open');$('#burger').setAttribute('aria-expanded',o)};
+document.querySelectorAll('#menu a').forEach(a=>a.onclick=()=>$('#menu').classList.remove('open'));
+const items=['Arroz chino','Chop suey','Pollo agridulce','Lumpias','Arroz con camarones','Bebida'],order={};
+$('#menuList').innerHTML=items.map((n,i)=>`<div class="item"><div>${n}<small>Plato de ejemplo · Precio por confirmar</small></div><button data-i="${i}" aria-label="Agregar ${n}">+</button></div>`).join('');
+const ordTxt=()=>Object.entries(order).map(([n,q])=>`${q} x ${n}`).join(', ');
+$('#menuList').onclick=e=>{const i=e.target.dataset.i;if(i===undefined)return;const n=items[i];order[n]=(order[n]||0)+1;$('#orderTxt').textContent=ordTxt()};
+$('#orderBtn').onclick=()=>{const t=ordTxt();if(!t)return alert('Agrega al menos un plato');open(`https://wa.me/${WA}?text=${encodeURIComponent('Hola, quiero hacer un pedido al restaurante: '+t)}`)};
+const today=new Date().toISOString().slice(0,10);$('#in').min=today;$('#out').min=today;
+const nights=()=>{const a=new Date($('#in').value),b=new Date($('#out').value);return (b-a)/864e5};
+const upd=()=>{const n=nights();$('#sum').innerHTML=n>0?`<b>Resumen:</b> ${$('#room').value} · ${$('#guests').value} huésped(es) · ${$('#in').value} → ${$('#out').value} · <b>${n} noche(s)</b><br>Total estimado: <b>Precio por confirmar</b> (el hotel confirma tarifa y disponibilidad)`:'Selecciona fechas válidas (la salida debe ser después de la llegada).'};
+['#in','#out','#room','#guests'].forEach(s=>$(s).oninput=upd);
+$('#bkBtn').onclick=()=>{if(!(nights()>0))return alert('Selecciona fechas válidas');const m=`Hola Hotel Saussa, soy ${$('#name').value||'(nombre)'}. Quiero reservar: ${$('#room').value}, ${$('#guests').value} huésped(es), llegada ${$('#in').value}, salida ${$('#out').value} (${nights()} noches). ¿Tienen disponibilidad y cuál es la tarifa?`;open(`https://wa.me/${WA}?text=${encodeURIComponent(m)}`)};

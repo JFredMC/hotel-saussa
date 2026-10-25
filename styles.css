@@ -1,0 +1,24 @@
+:root{--bg:#fffdf8;--fg:#1d2a2a;--muted:#5b6b6b;--card:#fff;--alt:#f1f7f5;--pri:#0f7b6c;--acc:#e8a33d;--bd:#e2e8e6}
+[data-theme=dark]{--bg:#0f1716;--fg:#e8f0ee;--muted:#9fb3af;--card:#17221f;--alt:#13201d;--pri:#35c2a9;--acc:#f0b555;--bd:#26332f}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.5}
+a{color:var(--pri)}.demo{background:var(--acc);color:#222;text-align:center;font-size:.8rem;padding:.3rem}
+.nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:1rem;padding:.7rem 1.2rem;background:var(--bg);border-bottom:1px solid var(--bd)}
+.logo{font-size:1.3rem;text-decoration:none;color:var(--fg);margin-right:auto}nav a{margin-left:1rem;text-decoration:none;color:var(--fg)}
+.burger,.theme{background:none;border:1px solid var(--bd);color:var(--fg);border-radius:8px;padding:.3rem .6rem;font-size:1.1rem;cursor:pointer}.burger{display:none}
+.hero{min-height:70vh;display:grid;place-items:center;text-align:center;color:#fff;background:linear-gradient(#0008,#0008),url(https://picsum.photos/seed/turbo-hotel/1600/900) center/cover}
+.hero-in{max-width:720px;padding:2rem}.hero h1{font-size:clamp(2rem,5vw,3.4rem);margin:.3rem 0}.tag{color:var(--acc);font-weight:600}
+section{padding:3.5rem 1.2rem;max-width:1100px;margin:auto}section.alt{max-width:none;background:var(--alt)}section.alt>*{max-width:1100px;margin-left:auto;margin-right:auto}
+h2{font-size:2rem;margin:0 0 .3rem}.sub{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:1rem}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden;position:relative;padding-bottom:1rem}.card img{width:100%;height:190px;object-fit:cover;display:block}
+.card h3,.card p{margin:.6rem 1rem 0}.ph{position:absolute;top:8px;left:8px;background:#000a;color:#fff;font-size:.7rem;padding:2px 6px;border-radius:6px}
+.price{font-weight:700;color:var(--acc)}.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.8rem;list-style:none;padding:0}.svc li{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:1rem}
+.btn{display:inline-block;background:var(--pri);color:#fff;border:0;border-radius:10px;padding:.75rem 1.2rem;font-weight:600;text-decoration:none;cursor:pointer;margin:.3rem}.btn.ghost{background:transparent;border:2px solid #fff}
+.btn.wompi{background:#777;cursor:not-allowed;opacity:.7}.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem;margin:1rem 0}
+.item{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:.8rem}.item small{color:var(--muted);display:block}
+.item button{background:var(--pri);color:#fff;border:0;border-radius:8px;width:2rem;height:2rem;font-size:1.1rem;cursor:pointer}
+.bk{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}.bk label{display:flex;flex-direction:column;font-weight:600;gap:.3rem}.bk .full{grid-column:1/-1}
+input,select{padding:.6rem;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--fg);font:inherit}
+.sum{margin:1rem 0;padding:1rem;border-radius:10px;background:var(--card);border:1px dashed var(--pri)}
+iframe{width:100%;height:360px;border:0;border-radius:14px}blockquote{margin:0;background:var(--card);border-left:4px solid var(--acc);padding:1rem;border-radius:10px}cite{display:block;margin-top:.5rem;color:var(--muted);font-size:.85rem}
+footer{text-align:center;padding:2rem;color:var(--muted);border-top:1px solid var(--bd)}.fab{position:fixed;right:18px;bottom:18px;background:#25d366;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 12px #0004}
+@media(max-width:760px){.burger{display:block}nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;border-bottom:1px solid var(--bd)}nav.open{display:flex}nav a{padding:.8rem 1.2rem;margin:0}}
